@@ -55,7 +55,6 @@ const client = (() => {
 
         return navigator.serviceWorker.register('service-worker.js')
             .then(regObj => {
-<<<<<<< HEAD
                 console.log("service worker is registered successfully!");
                 serviceWorkerRegObj = regObj;
                 showNotificationButton();
@@ -65,11 +64,6 @@ const client = (() => {
                         if (subs) disablePushNotificationButton()
                         else enablePushNotificationButton()
                     })
-=======
-                console.log("Service worker is registered successfully!");
-                serviceWorkerRegObj = regObj;
-                showNotificationButton();
->>>>>>> m04-client-subscription
             })
     }
 
@@ -83,7 +77,6 @@ const client = (() => {
         .then(registerServiceWorker)
         .then(requestNotificationPermissions)
         .catch(err => console.error(err))
-<<<<<<< HEAD
 
     const disablePushNotificationButton = () => {
         isUserSubscribed = true
@@ -142,7 +135,9 @@ const client = (() => {
         const unsubscribeWithServer = (id) => {
             return fetch('http://localhost:3000/removeSubscriber', {
                 method: 'POST',
-                body: JSON.stringify({ id }),
+                body: JSON.stringify({
+                    id
+                }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -171,6 +166,3 @@ const client = (() => {
     }
     setupPush()
 })()
-=======
-})()
->>>>>>> m04-client-subscription
