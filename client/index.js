@@ -11,37 +11,34 @@ const client = (() => {
         notificationButton.addEventListener("click", showNotification);
     }
 
-    const notifyInApp = (transaction) => {
+    const notifyInApp = (content) => {
         const html = `<div>
-            <div>Amount  :   <b>${transaction.amount}</b></div>
-            <div>Business: <b>${transaction.business}</b></div>
-            <div>Name    :  <b>${transaction.name}</b></div>
-            <div>Type    : <b>${transaction.type}</b></div>
-            <div>Account : <b>${transaction.account}</b></div>
-        </div>
-        `
+                        <div><img src="${content.logo}" alt="logo" width="56" height="56"></div>
+                        <div>Sucursal: <b>${content.branch}</b></div>
+                        <div>Contacto: <b>${content.contact}</b></div>
+                        <div>Total: <b>${content.total}</b></div>
+                    </div>
+                    `
         pushNotification.style.display = "flex"
         pushNotification.innerHTML = html
     }
 
-    let count = 0
+    let count = 1
     const showNotification = () => {
-        const simpleTextNotification = reg => reg.showNotification("This is simple but nice!")
-
-        navigator.serviceWorker.getRegistration()
-            .then(registration => simpleTextNotification(registration));
+        // const simpleTextNotification = reg => reg.showNotification("This is simple but nice!")
+        // navigator.serviceWorker.getRegistration().then(registration => simpleTextNotification(registration));
 
         const customizedNotification = reg => {
             const options = {
-                body: 'Wanna know me better?',
+                body: 'Carnes Supremas te ha solicitado un pedido',
                 icon: "imgs/ventup_appicon.png",
                 actions: [{
-                        action: "search",
-                        title: "Check my profile"
+                        action: "view-order",
+                        title: "Ver Orden"
                     },
                     {
-                        action: "close",
-                        title: "Forget it!"
+                        action: "confirm-order",
+                        title: "Confirmar Orden"
                     },
                 ],
                 data: {
@@ -49,7 +46,7 @@ const client = (() => {
                     githubUser: "poacosta"
                 }
             }
-            reg.showNotification('Second Notification - ' + count++, options)
+            reg.showNotification(`Tienes una nueva orden (${count++})`, options)
         }
 
         navigator.serviceWorker.getRegistration()
@@ -76,9 +73,12 @@ const client = (() => {
                 showNotificationButton();
 
                 serviceWorkerRegObj.pushManager.getSubscription()
-                    .then(subs => {
-                        if (subs) disablePushNotificationButton()
-                        else enablePushNotificationButton()
+                    .then(subscribers => {
+                        if (subscribers) {
+                            disablePushNotificationButton()
+                        } else {
+                            enablePushNotificationButton()
+                        }
                     })
 
                 navigator.serviceWorker.addEventListener('message', e => notifyInApp(e.data))
@@ -99,13 +99,13 @@ const client = (() => {
     const disablePushNotificationButton = () => {
         isUserSubscribed = true
         pushButton.innerText = "DISABLE PUSH NOTIFICATIONS"
-        pushButton.style.backgroundColor = "#ea9085"
+        pushButton.style.backgroundColor = "#f5b7b1"
     }
 
     const enablePushNotificationButton = () => {
         isUserSubscribed = false
         pushButton.innerText = "ENABLE PUSH NOTIFICATIONS"
-        pushButton.style.backgroundColor = "#efb1ff"
+        pushButton.style.backgroundColor = "#aed6f1"
     }
 
     const setupPush = () => {
@@ -178,8 +178,11 @@ const client = (() => {
         }
 
         pushButton.addEventListener('click', () => {
-            if (isUserSubscribed) unSubscribeUser()
-            else subscribeUser();
+            if (isUserSubscribed) {
+                unSubscribeUser()
+            } else {
+                subscribeUser()
+            }
         })
     }
     setupPush()
