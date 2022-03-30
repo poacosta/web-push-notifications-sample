@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
@@ -15,7 +16,8 @@ h1 {
 
 .app-bar {
     width: 100%;
-    background-color: #f4e04d;
+    background-color: #3caf9f;
+    color: #faf4f4;
 }
 
 .setup-complete {
@@ -24,4 +26,47 @@ h1 {
     justify-content: center;
     padding: 1em;
     background-color: #faf4f4;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+button {
+    margin: 1em;
+    height: 50px;
+    font-family: 'Lato', sans-serif;
+    padding: 1em;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 10px;
+}
+
+#btn-notify {
+    background: linear-gradient(180deg, #379753, #379286);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 10px;
+    /* Hide by Default. Only enabled if ServiceWorker is available */
+    display: none;
+}
+
+#btn-push {
+    background-color: #aed6f1;
+    color: #2c3e50;
+}
+
+#push-notification {
+    color: #faf4f4;
+    margin-top: 2em;
+    padding: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #3caf9f;
+    /* Hide by Default. Only enabled when service worker pushes messages */
+    display: none;
 }
