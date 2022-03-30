@@ -23,7 +23,6 @@ const client = (() => {
         pushNotification.innerHTML = html
     }
 
-    let count = 1
     const showNotification = () => {
         // const simpleTextNotification = reg => reg.showNotification("This is simple but nice!")
         // navigator.serviceWorker.getRegistration().then(registration => simpleTextNotification(registration));
@@ -46,7 +45,7 @@ const client = (() => {
                     githubUser: "poacosta"
                 }
             }
-            reg.showNotification(`Tienes una nueva orden (${count++})`, options)
+            reg.showNotification(`Tienes una nueva orden`, options)
         }
 
         navigator.serviceWorker.getRegistration()
