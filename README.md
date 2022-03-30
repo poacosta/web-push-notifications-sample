@@ -78,3 +78,12 @@ node server/app.js
  * [W3 Spec on Page Visibility](https://www.w3.org/TR/page-visibility/#dom-document-visibilitystate)  
 
 #### Forked from: 🌱 https://github.com/hhimanshu/web-push-notifications 🙏
+
+### For React
+* [React-push-notification](https://www.npmjs.com/package/react-push-notification)
+* [Pushwoosh Web Push Notification SDK](https://www.npmjs.com/package/web-push-notifications)
+
+### More Docs
+* [Notifications API by WHATWG community](https://notifications.spec.whatwg.org/)
+* [Notifications API by MDN](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API)
+* [Web Push Notifications by Google](https://developers.google.com/web/fundamentals/push-notifications)
