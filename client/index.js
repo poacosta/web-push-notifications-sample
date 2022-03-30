@@ -10,19 +10,27 @@ const client = (() => {
     }
 
     const showNotification = () => {
-        const simpleTextNotification = reg => reg.showNotification("My First Notification")
+        const simpleTextNotification = reg => reg.showNotification("This is simple but nice!")
+
+        navigator.serviceWorker.getRegistration()
+            .then(registration => simpleTextNotification(registration));
 
         const customizedNotification = reg => {
             const options = {
-                body: 'This is an important body!',
-                icon: "imgs/notification.png",
-                actions: [
-                    { action: "search", title: "Try Searching!" },
-                    { action: "close", title: "Forget it!" },
+                body: 'Wanna know me better?',
+                icon: "imgs/ventup_appicon.png",
+                actions: [{
+                        action: "search",
+                        title: "Check my profile"
+                    },
+                    {
+                        action: "close",
+                        title: "Forget it!"
+                    },
                 ],
                 data: {
                     notificationTime: Date.now(),
-                    githubUser: "hhimanshu"
+                    githubUser: "poacosta"
                 }
             }
             reg.showNotification('Second Notification', options)
@@ -47,6 +55,7 @@ const client = (() => {
 
         return navigator.serviceWorker.register('service-worker.js')
             .then(regObj => {
+<<<<<<< HEAD
                 console.log("service worker is registered successfully!");
                 serviceWorkerRegObj = regObj;
                 showNotificationButton();
@@ -56,6 +65,11 @@ const client = (() => {
                         if (subs) disablePushNotificationButton()
                         else enablePushNotificationButton()
                     })
+=======
+                console.log("Service worker is registered successfully!");
+                serviceWorkerRegObj = regObj;
+                showNotificationButton();
+>>>>>>> m04-client-subscription
             })
     }
 
@@ -69,6 +83,7 @@ const client = (() => {
         .then(registerServiceWorker)
         .then(requestNotificationPermissions)
         .catch(err => console.error(err))
+<<<<<<< HEAD
 
     const disablePushNotificationButton = () => {
         isUserSubscribed = true
@@ -156,3 +171,6 @@ const client = (() => {
     }
     setupPush()
 })()
+=======
+})()
+>>>>>>> m04-client-subscription
