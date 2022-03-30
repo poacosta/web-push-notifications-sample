@@ -2,11 +2,11 @@ const webPush = require('web-push');
 const faker = require('faker');
 
 const pushSubscription = {
-    "endpoint": "https://fcm.googleapis.com/fcm/send/cgpM2kf-o9I:APA91bGsFxoaA-YvOzeMUtmn3BIiWotLkpU3cwZNXOOBNGUJ9e1U6IIHd-oLnsgxFnW2GH6UnBeiXflxPUXmkBl_kk_vkL-oUHMFAOEwKUUsA4Zr9x8x6G9Weu9OnGIW94lJw5YEHYDc",
+    "endpoint": "https://updates.push.services.mozilla.com/wpush/v2/gAAAAABiQ9AER_M1QgzPWbVk3iwYpPmcmULDIxaL5GJrL346emHA8ze_fU4oHKoLTPCG2huxna20oESIFS0yp30sORtzwT22bkvGCjmQSmM8IACMSwE2fWLGnvtDjmCHZ0mmkg6fodooAlJb_ax1OCz5zkYoxBw28GQIMKZvv0_pD2EzvZPfmvE",
     "expirationTime": null,
     "keys": {
-        "p256dh": "BCUxEO-k-xwq8TzNYrvVbvMGjJS2tEQWfZCt6pvbN1OznFSxdTbFCGOgcNfpVWo2imU8ybRamYKz5xVUCJs43do",
-        "auth": "JutsLAPMx6UcqHQrRkm6JQ"
+        "auth": "6Wj8M05Ymroj_dZxW9on8w",
+        "p256dh": "BI6CY82FT58ewv16oBcWV9w89dK_-ZaFcGgzL2qLAhqH0TGD1ysrPRCYuWC7B1YBQgK6fkEQ6hbsPjgNLcExxnk"
     }
 }
 

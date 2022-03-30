@@ -26,20 +26,27 @@ const client = (() => {
 
     let count = 0
     const showNotification = () => {
-        const simpleTextNotification = reg => reg.showNotification("My First Notification")
+        const simpleTextNotification = reg => reg.showNotification("This is simple but nice!")
+
+        navigator.serviceWorker.getRegistration()
+            .then(registration => simpleTextNotification(registration));
 
         const customizedNotification = reg => {
             const options = {
-                body: 'This is an important body!',
-                icon: "imgs/notification.png",
-                tag: "group-1",
-                actions: [
-                    { action: "search", title: "Try Searching!" },
-                    { action: "close", title: "Forget it!" },
+                body: 'Wanna know me better?',
+                icon: "imgs/ventup_appicon.png",
+                actions: [{
+                        action: "search",
+                        title: "Check my profile"
+                    },
+                    {
+                        action: "close",
+                        title: "Forget it!"
+                    },
                 ],
                 data: {
                     notificationTime: Date.now(),
-                    githubUser: "hhimanshu"
+                    githubUser: "poacosta"
                 }
             }
             reg.showNotification('Second Notification - ' + count++, options)
@@ -146,7 +153,9 @@ const client = (() => {
         const unsubscribeWithServer = (id) => {
             return fetch('http://localhost:3000/removeSubscriber', {
                 method: 'POST',
-                body: JSON.stringify({ id }),
+                body: JSON.stringify({
+                    id
+                }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
