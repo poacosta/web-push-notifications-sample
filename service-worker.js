@@ -36,7 +36,7 @@ self.addEventListener('push', event => {
     const content = JSON.parse(event.data.text());
 
     const options = {
-        body: `<b>${content.branch}</b> te ha solicitado un pedido.`,
+        body: `${content.branch} te ha solicitado un pedido.`,
         icon: `${content.logo}`,
         actions: [{
                 action: "view-order",
